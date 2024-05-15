@@ -1,0 +1,20 @@
+<div class="container">
+  <h1>Currency Converter</h1>
+
+  <label for="amount">Amount:</label>
+  <input id="amount" type="number" [(ngModel)]="amount" (input)="onAmountChange()" />
+
+  <label for="fromCurrency">From:</label>
+  <select id="fromCurrency" [(ngModel)]="fromCurrency" (change)="onCurrencyChange()">
+    <option *ngFor="let currency of currencyKeys" [value]="currency">{{ currency }}</option>
+  </select>
+
+  <label for="toCurrency">To:</label>
+  <select id="toCurrency" [(ngModel)]="toCurrency" (change)="onCurrencyChange()">
+    <option *ngFor="let currency of currencyKeys" [value]="currency">{{ currency }}</option>
+  </select>
+
+  <p *ngIf="convertedAmount !== null">
+    {{ amount }} {{ fromCurrency }} = {{ convertedAmount | number: '1.2-2' }} {{ toCurrency }}
+  </p>
+</div>
